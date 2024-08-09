@@ -19,4 +19,5 @@ gradle + kotlin을 활용한 compose multiplatform 연습
 ---------------------
 ## 공부자료 목록
 
-1. [Compose multiplatform 예제 목록] (https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html).
+1. [Compose multiplatform 공식 예제 목록](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html).
+2. 
