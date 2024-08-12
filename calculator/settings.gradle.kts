@@ -1,4 +1,4 @@
-rootProject.name = "first_app"
+rootProject.name = "calculator"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
