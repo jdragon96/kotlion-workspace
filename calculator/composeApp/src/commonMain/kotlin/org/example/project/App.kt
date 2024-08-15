@@ -3,7 +3,10 @@ package org.example.project
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -160,6 +163,65 @@ fun Calculate(num: Pair<String, String>, op: OperatorType): Double
         else -> {
             return 0.0
         }
+    }
+}
+
+@Composable
+fun ListScreen(
+    onItemClick: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(all = 16.dp),
+    ) {
+        items(50) { item ->
+            val width = 340 + item * 20
+            val height = width * 4 / 3
+            val url = "https://loremflickr.com/$width/$height"
+            Row(
+                modifier = Modifier
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        onItemClick(url)
+                    }
+                    .fillMaxWidth(),
+            ) {
+                ImageRenderer(
+                    imageBitmap = Res.drawable.eg,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(4f / 4f),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun DetailsScreen(
+    url: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            ),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        ImageRenderer(
+            imageBitmap = Res.drawable.eg,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(4f / 3f),
+        )
     }
 }
 
